@@ -47,4 +47,4 @@ export function createServer(){return http.createServer(async(req,res)=>{
   res.setHeader('Content-Type',url.pathname.endsWith('.js')?'text/javascript':url.pathname.endsWith('.css')?'text/css':'text/html');
   try{res.end(await readFile(new URL('./public/'+files[url.pathname],import.meta.url)));}catch{res.writeHead(500);res.end('Unable to load app');}
 });}
-if(process.argv[1]===fileURLToPath(import.meta.url)) createServer().listen(Number(process.env.PORT)||3000,'127.0.0.1',()=>console.log('Job Scout: http://localhost:3000'));
+if(process.argv[1]===fileURLToPath(import.meta.url)) createServer().listen(Number(process.env.PORT)||3000,'0.0.0.0',()=>console.log('Job Scout: http://localhost:3000'));
